@@ -1,4 +1,9 @@
-
+/* lab4/include/codon.h */
+#ifndef __CODON__
+#define __CODON__
+char condon(int base1, int base2, int base3);
+int transla(char DNA);
+#endif
 
 /* lab4/src/codon.c */
 #include <stdio.h>
@@ -65,7 +70,10 @@ int transla(char DNA)
   else return -1;
 }
 
-
+/* lab4/src/main.c */
+#include "codon.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
