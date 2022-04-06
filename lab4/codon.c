@@ -1,7 +1,7 @@
 /* lab4/include/codon.h */
 #ifndef __CODON__
 #define __CODON__
-char condon(int base1, int base2, int base3);
+char codon(int base1, int base2, int base3);
 int transla(char DNA);
 #endif
 
@@ -13,7 +13,7 @@ int transla(char DNA);
 #define G 1
 #define C 2
 
-char condon(int base1, int base2, int base3)
+char codon(int base1, int base2, int base3)
 {
   char base[4][4][4];
   int i;
@@ -26,7 +26,7 @@ char condon(int base1, int base2, int base3)
 
   for(i=0;i<=3;i++) base[A][C][i]='T';
 
-  base[A][T][A]='I';base[A][T][T]='M';
+  base[A][T][A]='I';base[A][T][T]='I';
   base[A][T][C]='I';base[A][T][G]='M';
 
   base[G][A][A]='E';base[G][A][G]='E';
@@ -84,7 +84,7 @@ int main()
 
     fflush(stdin);
 
-    printf("please input:");
+    printf("please input a whole sequence:");
 
     dna[0]=getchar();
     dna[1]=getchar();
@@ -95,7 +95,7 @@ int main()
             if (transla(dna[i])==-1) {
                 printf("\n");
                 printf("error\n");
-                exit (0);
+                exit (1);
     }
   }
 
@@ -108,7 +108,7 @@ int main()
                 if (transla(dna[2])==-1) {
                 printf("\n");
                 printf("error\n");
-                exit (0);
+                exit (1);
                 }
             }
 
@@ -118,11 +118,11 @@ int main()
                     else {
                         printf("\n");
                         printf("error\n");
-                        exit (0);
+                        exit (1);
                     }
                 }
 
-            amino = condon(base[0],base[1],base[2]);
+            amino = codon(base[0],base[1],base[2]);
             printf("%c",amino);
             if (amino == '*') break;
             dna[0]=getchar();
@@ -135,10 +135,25 @@ int main()
 
             dna[0]=getchar();
             if(dna[0]=='\n') {printf("\n"); exit(0);}
+            if (transla(dna[2])==-1) {
+                printf("\n");
+                printf("error\n");
+                exit (1);
+                }
             dna[1]=getchar();
             if(dna[1]=='\n') {printf("\n"); exit(0);}
+            if (transla(dna[2])==-1) {
+                printf("\n");
+                printf("error\n");
+                exit (1);
+                }
             dna[2]=getchar();
             if(dna[2]=='\n') {printf("\n"); exit(0);}
+            if (transla(dna[2])==-1) {
+                printf("\n");
+                printf("error\n");
+                exit (1);
+                }
 
         printf("\n");
     }
