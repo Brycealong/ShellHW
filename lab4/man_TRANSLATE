@@ -1,0 +1,25 @@
+%TRANSLATE(3) translate 1.0.4
+%Darcine
+%APR 2022
+
+# NAME
+translate
+
+# Synopsis
+No Synopsis available yet.
+
+# DESCRIPTION
+**translate.static** is a function which can read and translate one gene sequence into amino acid sequences at a time.Only exon will be translated.
+
+## Input Patterns
+Please input one sequence at a time,which should only consist with "ATGC"(not case sensitive).Otherwise,it will print error and exit(1).Only keyboard input is acceptable.
+
+# EXIT VALUES
+**0**
+: Success
+
+**1**
+: Input error
+
+# BUGS
+If there are exons before the first promoter, they will not be translated.
