@@ -1,0 +1,28 @@
+%TRANSLA(3) transla 1.0.2
+%JialuWei
+%MAR 2022
+
+# NAME
+transla
+
+# DESCRIPTION
+**transla** is a function which can translate "ATGC"(not case sensitive) into integers.
+
+## Input Patterns
+Please input one letter a time. 
+
+# EXIT VALUES
+**0**
+: A/a
+
+**1**
+: C/c
+
+**2**
+: G/g
+
+**3**
+: T/t
+
+**-1**
+: Input error
