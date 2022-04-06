@@ -9,10 +9,21 @@ translate
 No Synopsis available yet.
 
 # DESCRIPTION
-**translate.static** is a function which can read and translate one gene sequence into amino acid sequences at a time.Only exon will be translated.
+**translate.static** is a function which can read and translate one gene sequence into amino acid sequences at a time.Only exons will be translated.It outputs the result of on exon sequence to a line.
 
 ## Input Patterns
-Please input one sequence at a time,which should only consist with "ATGC"(not case sensitive).Otherwise,it will print error and exit(1).Only keyboard input is acceptable.
+Please input one sequence at a time,which should only consist of "ATGC"(not case sensitive).Otherwise,it will print error and exit(1).Only keyboard input is acceptable.
+
+# Example
+int Main(){
+    translate();
+    return 0;
+}
+It will tell you to input a whole sequence.Here we input "agccctccaggacaggctgcatcagaagaggccatcaagcagatcactgtccttctgccatggccctgtggatgcgcctcctgcccctgctggcgctgctggccctctggggacctgacccagccgcagcctttgtgaaccaacacctgtgcggctcacacctggtggaagctctctacctagtgtgcggggaacgaggcttcttctacacacccaagacccgccgggaggcagaggacctgcaggtggggcaggtggagctgggcgggggccctggtgcaggcagcctgcagcccttggccctggaggggtccctgcagaagcgtggcattgtggaacaatgctgtaccagcatctgctccctctaccagctggagaactactgcaactagacgcagcccgcaggcagccccacacccgccgcctcctgcaccgagagagatggaataaagcccttgaaccagc" for test.
+We can get "LHQKRPSSRSLSFCHGPVNAPPAPAGAAGPLGT*
+            L*
+            LCGSHLVEALYLVCGERGFFYTPKTRREAENLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN*
+            LHRERWNKALEP It's the end of the sequence."
 
 # EXIT VALUES
 **0**
