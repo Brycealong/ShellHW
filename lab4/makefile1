@@ -1,7 +1,7 @@
-bin/codon.static:src/main.c static/codon.o lib/libcodon.a
-                            gcc -static -o bin/codon.static src/main.c -L./lib -lcodon -I./include
+bin/translate.static:src/main.c static/codon.o lib/libcodon.a
+  gcc -static -o bin/translate.static src/main.c -L./lib -lcodon -I./include
 
 static/codon.o:src/codon.c
-        gcc -c -o static/codon.o src/codon.c
+  gcc -c -o static/codon.o src/codon.c
 lib/libcodon.a:static/codon.o
-        ar rcs lib/libcodon.a static/codon.o
+  ar rcs lib/libcodon.a static/codon.o
