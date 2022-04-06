@@ -14,6 +14,19 @@ No Synopsis available yet.
 ## Input Patterns
 Please input one sequence at a time,which should only consist with "ATGC"(not case sensitive).Otherwise,it will print error and exit(1).
 
+# OPTIONS
+**-L**, **-Locus**
+:Display the locus of the gene.
+
+**-l**, **-length**
+:Display the length of the gene.
+
+**-D**, **-definition**
+:Display the definition of the gene.
+
+**-T**, **-translation**
+:Translate the gene sequence into the amino-acids sequence.
+
 # EXIT VALUES
 **0**
 : Success
