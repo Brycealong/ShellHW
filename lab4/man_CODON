@@ -1,0 +1,15 @@
+%CODON(3) codon 1.0.3
+%Mei
+%APR 2022
+
+# NAME
+codon
+
+# Synopsis
+No Synopsis available yet.
+
+# DESCRIPTION
+**codon** is an array function which stores the triplet codon table. Input the subscript and you'll get the corresponding amino acid.
+
+## Input Patterns
+Please input three integers(0-3) at a time.
