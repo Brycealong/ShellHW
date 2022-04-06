@@ -4,7 +4,7 @@
 #define G 1
 #define C 2
 
-char condon(int base1, int base2, int base3)
+char codon(int base1, int base2, int base3)
 {
     char base[4][4][4];
     int i;
