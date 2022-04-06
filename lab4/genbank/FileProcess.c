@@ -8,7 +8,9 @@ int main(int argc, char *argv[]){
     FILE *fp;
     char file[MAX_LINE][MAX_COLUMN]={0};
     char info[MAX_LINE][20][15]={0};
-    int i = -1, j = 0, k;
+    char *amino;
+    amino=(char *)malloc(500);
+    int i = -1, j = 0, k, m, n = 0;
     if((fp = fopen("./NM000207.gb","r"))==NULL){  //open file
         perror("Fail to open!\n");
         return -1;
@@ -23,6 +25,21 @@ int main(int argc, char *argv[]){
     }
     fclose(fp);  //close file
     //now the file is saved in two arrays
+    
+    char *seq;
+    seq=(char *)malloc(2000);
+    for(i=0;i<=MAX_LINE;i++){
+        if(strcmp("ORIGIN",info[i][0])==0){
+            for(j=i+1;j<=209;j++){
+                for(k=1;k<=6;k++){
+                    for(m=0;m<=9;m++){
+                        if(info[j][k][m]!='\n')seq[n]=info[j][k][m];
+                        n++;
+                    }
+                }
+            }
+        }
+    }    //the DNA sequence is saved in seq
     
     if(argv[1] == 'L')printf("Locus: %s",info[0][1]);//print locus
 
@@ -48,6 +65,13 @@ int main(int argc, char *argv[]){
     }
 
 
+   if(argv[1] == 'T'){  //translate the DNA
+        amino=trans_amino(seq);
+        for(i=0;*(amino+i)!='*';i++){
+            printf("%c",*(amino+i));
+        }
+    }    
+    
     if(argv[1] == 'F'){  //print fasta file
         for(i=0;i<=MAX_LINE;i++){
             if(strcmp("ORIGIN",info[i][0])==0){
