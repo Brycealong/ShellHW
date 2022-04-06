@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *trans_amino(int DNA[]){
+char *trans_amino(char DNA[]){
     int *DNAnum;
 	DNAnum=(int *)malloc(1000);
 	DNAnum=translation(DNA);
