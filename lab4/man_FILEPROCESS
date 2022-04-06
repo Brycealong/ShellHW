@@ -1,0 +1,29 @@
+%FILEPROCESS(3) FileProcess 1.0.4
+%SylviaMei
+%APR 2022
+
+# NAME
+FileProcess
+
+# DESCRIPTION
+**FileProcess** can read a Genbank file and process it according to options.
+
+# OPTIONS
+**-L**, **-Locus**
+:Display the locus of the gene.
+
+**-l**, **-length**
+:Display the length of the gene.
+
+**-D**, **-definition**
+:Display the definition of the gene.
+
+**-T**, **-translation**
+:Translate the gene sequence into the amino-acids sequence.
+
+# EXIT VALUES
+**0**
+: Success
+
+**1**
+: Input error
