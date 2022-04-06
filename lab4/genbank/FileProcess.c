@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX_LINE 210
+#define MAX_LINE 250
 #define MAX_COLUMN 81
 
 int main(int argc, char *argv[]){
     FILE *fp;
     char file[MAX_LINE][MAX_COLUMN]={0};
-    char info[MAX_LINE][20][15]={0};
+    char info[MAX_LINE][15][15]={0};
     char *amino;
     amino=(char *)malloc(500);
     int i = -1, j = 0, k, m, n = 0;
@@ -17,6 +17,7 @@ int main(int argc, char *argv[]){
     }
     while((fgets(file[++i],MAX_COLUMN+1,fp))!=NULL){  //save one line to an array named file
         char *subfile = strtok(file[i]," ");
+        j = 0;
         while(subfile!=NULL){
             strcpy(info[i][j], subfile);  //save a word to an array named info
             subfile = strtok(NULL," ");  //read the next word
