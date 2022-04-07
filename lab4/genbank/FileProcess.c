@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "codon.h"
 #define MAX_LINE 250
 #define MAX_COLUMN 81
 
-int main(int argc, char *argv[]){
+int main(int argc, char **argv){
     FILE *fp;
     char file[MAX_LINE][MAX_COLUMN]={0};
     char info[MAX_LINE][15][15]={0};
@@ -26,7 +27,7 @@ int main(int argc, char *argv[]){
     }
     fclose(fp);  //close file
     //now the file is saved in two arrays
-    
+
     char *seq;
     seq=(char *)malloc(2000);
     for(i=0;i<=MAX_LINE;i++){
@@ -41,20 +42,21 @@ int main(int argc, char *argv[]){
             }
         }
     }    //the DNA sequence is saved in seq
-    
-    if(argv[1] == 'L')printf("Locus: %s",info[0][1]);//print locus
 
-    if(argv[1] == 'l')printf("Length: %s %s",info[0][2],info[0][3]);// print length
+    if (strcmp(argv[1], "L") == 0|| strcmp(argv[1], "Locus") == 0)printf("Locus: %s",info[0][1]);printf("\n");//print locus
 
-    if(argv[1] == 'D'){  //print definition
+    if (strcmp(argv[1], "l") == 0|| strcmp(argv[1], "length") == 0)printf("Length: %s %s",info[0][2],info[0][3]);printf("\n");// print length
+
+    if(strcmp(argv[1], "D") == 0|| strcmp(argv[1], "definition") == 0){  //print definition
         printf("Definition:");
         for(i=1;i<=15;i++){
             printf(" %s",info[1][i]);
             if(info[1][i][0]==NULL)break;
         }
+  	printf("\n");
     }
 
-    if(argv[1] == 'S'){  //print DNA sequence
+    if(strcmp(argv[1], "S") == 0|| strcmp(argv[1], "sequence") == 0){  //print DNA sequence
         for(i=0;i<=MAX_LINE;i++){
             if(strcmp("ORIGIN",info[i][0])==0){
                 printf("The DNA sequence is:\n");
@@ -63,17 +65,19 @@ int main(int argc, char *argv[]){
                 }
             }
         }
+  	printf("\n");
     }
 
 
-   if(argv[1] == 'T'){  //translate the DNA
-        amino=trans_amino(seq);
+   if(strcmp(argv[1], "T") == 0 || strcmp(argv[1], "translation")== 0){  //translate the DNA
+        amino=tras_amino(seq);
         for(i=0;*(amino+i)!='*';i++){
             printf("%c",*(amino+i));
         }
-    }    
-    
-    if(argv[1] == 'F'){  //print fasta file
+  	printf("\n");
+    }
+
+    if(strcmp(argv[1], "F") == 0|| strcmp(argv[1], "fasta") == 0){  //print fasta file
         for(i=0;i<=MAX_LINE;i++){
             if(strcmp("ORIGIN",info[i][0])==0){
                 printf(">NM_000207\n");
@@ -82,7 +86,8 @@ int main(int argc, char *argv[]){
                 }
             }
         }
+	  printf("\n");
     }
-    
+
     return 0;
 }
