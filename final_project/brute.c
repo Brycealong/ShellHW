@@ -7,7 +7,7 @@
 
 //tell user the usage of this program
 void usage(){
-    printf( "USAGE:./apsp FILENAME\n [-om overlap_minimum]" );
+    printf( "USAGE:./brute FILENAME [-om overlap_minimum]\n" );
     return;
 }
 
