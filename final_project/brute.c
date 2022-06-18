@@ -7,7 +7,7 @@
 
 //tell user the usage of this program
 void usage(){
-    printf( "USAGE:./apsp FILENAME\n" );
+    printf( "USAGE:./apsp FILENAME\n [-om overlap_minimum]" );
     return;
 }
 
@@ -18,7 +18,7 @@ int overlen(char s2[], char s1[]);
 int find_min(char s1[], char s2[]);
 
 int main(int argc, char** argv[]){
-    if(argc != 2){
+    if(argc != 2 && argc != 4){
         printf("Wrong Input!\n");
         usage();
         return -1;
@@ -35,7 +35,10 @@ int main(int argc, char** argv[]){
 
     char DNA[MAX_NUM][MAX_LEN]={'\0'};
     char tmp;
-    int i=-1,j=0,flag=0;
+    int i=-1,j=0,flag=0,om=10;
+
+    if (strcmp(argv[2],"-om")) om=atoi(argv[3]);
+
     while((tmp=fgetc(fp))!=EOF)
     {
         if(tmp=='>')
@@ -64,13 +67,13 @@ int main(int argc, char** argv[]){
     fclose(fp);
 
     int num=i+1;
-    int arr[num][num];
+    int Ov[num][num];
     for(i=0;i<num;i++){
         for(j=0;j<num;j++){
-            arr[i][j]=overlen(DNA[i],DNA[j]);
-            printf("%d,",arr[i][j]);
+            Ov[i][j]=overlen(DNA[i],DNA[j]);
+            if(Ov[i][j]>om)
+            printf("%d,%d,%d\n",i,j,Ov[i][j]);
         }
-        printf("\n");
     }
 
     return 0;
