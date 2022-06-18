@@ -17,7 +17,7 @@ int overlen(char s2[], char s1[]);
 //find the shortest between the length of s1 and the length of s2
 int find_min(char s1[], char s2[]);
 
-int main(int argc, char** argv[]){
+int main(int argc, char* argv[]){
     if(argc != 2 && argc != 4){
         printf("Wrong Input!\n");
         usage();
@@ -37,8 +37,14 @@ int main(int argc, char** argv[]){
     char tmp;
     int i=-1,j=0,flag=0,om=10;
 
-    if (strcmp(argv[2],"-om")) om=atoi(argv[3]);
-
+    if(argc == 4){
+    	if(strcmp(argv[2],"-om")==0) om=atoi(argv[3]);
+	    else{
+	        usage();
+	        return -1;
+	    }
+    }
+    
     while((tmp=fgetc(fp))!=EOF)
     {
         if(tmp=='>')
