@@ -104,8 +104,8 @@ def overlen(s1, s2):
     return over
 
 
-f = input("please give a .fasta file: ")  # query for a fasta file
-print()
+f = input("please give a .fasta file: \n")  # query for a fasta file
+om = input("Enter the minimum overlap length: ")
 fh = open(f, 'r')  # open the fasta file
 ss = []
 for line in fh:
@@ -122,10 +122,11 @@ for line in fh:
 fh.close()
 
 k = len(ss)
-k
 mat = pd.DataFrame(columns=range(1, k+1), index=range(1, k+1))
 for i in range(k):
     for j in range(k):
-        mat.loc[i+1, j+1] = overlen(ss[j], ss[i])
+        mat.loc[i+1, j+1] = overlen(ss[j], ss[i])  # prefix of i, suffix of j
+        if mat.loc[i+1, j+1] >= om:
+            print(i+1, j+1, mat.loc[i+1, j+1])
 # return a csv file called apsp.csv
 mat.to_csv('apsp.csv', sep=',', header=True, index=True)
