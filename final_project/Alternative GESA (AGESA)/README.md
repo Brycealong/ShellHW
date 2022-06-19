@@ -8,7 +8,7 @@ sh run.sh
 
 To check output after running:
 cat aapsp.out
-
+------
 In order to test results when om = 10 and .fasta file = 'c_elegans_ests_200.fasta':
 First download `dataset.rar` and decompress it.
 
