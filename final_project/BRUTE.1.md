@@ -32,7 +32,7 @@ $./brute c_elegans_ests_200.fasta -om 5
 151,74,6
 152,74,6
 157,74,6
-167,74,6
+167,74,6\
 175,74,6
 
 # EXIT VALUES
