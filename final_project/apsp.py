@@ -89,23 +89,8 @@ class SuffixTree():
             return node.lab[off] == '$'
 
 
-# return the overlap length of two nucleotide strings
-def overlen(s1, s2):
-    """
-    s1 has the overlap suffix with s2 prefix
-    """
-    su1 = SuffixTree(s1)
-    i = 1
-    over = 0
-    while i < len(s2):
-        if su1.hasSuffix(s2[0:i]):
-            over = i
-        i += 1
-    return over
-
-
 f = input("please give a .fasta file: \n")  # query for a fasta file
-om = input("Enter the minimum overlap length: ")
+om = input("Enter the minimum overlap length: ")  # query for om
 fh = open(f, 'r')  # open the fasta file
 ss = []
 for line in fh:
@@ -120,13 +105,41 @@ for line in fh:
     else:  # synthesize a string from a block of several lines
         s = s + line.replace('\n', '')
 fh.close()
+# for item in ss:
+#     print(ss.index(item), item)
+
+ssu = []
+for item in ss:
+    ssu.append(SuffixTree(item))
+
+
+# return the overlap length of two nucleotide strings
+def overlen(i1, i2):
+    """
+    s1 has the overlap prefix with s2 suffix
+    """
+    su2 = ssu[i2]
+    s1 = ss[i1]
+    s2 = ss[i2]
+    i = 1
+    over = 0
+    minn = min(len(s1), len(s2))
+    while i <= minn:
+        if su2.hasSuffix(s1[0:i]):
+            over = i
+        i += 1
+    return over
+
 
 k = len(ss)
 mat = pd.DataFrame(columns=range(1, k+1), index=range(1, k+1))
 for i in range(k):
     for j in range(k):
-        mat.loc[i+1, j+1] = overlen(ss[j], ss[i])  # prefix of i, suffix of j
-        if mat.loc[i+1, j+1] >= om:
+        if i != j:
+            mat.loc[i+1, j+1] = overlen(i, j)  # prefix of i, suffix of j
+        else:
+            mat.loc[i+1, j+1] = 0
+        if mat.loc[i+1, j+1] >= int(om):
             print(i+1, j+1, mat.loc[i+1, j+1])
 # return a csv file called apsp.csv
 mat.to_csv('apsp.csv', sep=',', header=True, index=True)
