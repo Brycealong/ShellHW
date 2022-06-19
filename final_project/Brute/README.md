@@ -5,7 +5,7 @@ make
 ```
 ## Usage
 ```
-./brute FILENAME [-om overlap_minimum]
+./brute FILENAME [-om # overlap_minimum]
 ```
 ## man page
 First check if `/usr/local/man` exists. If not:
