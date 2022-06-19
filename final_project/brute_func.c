@@ -5,7 +5,7 @@ int find_min(char s1[], char s2[]){
   else return strlen(s1);
 }
 
-int overlen(char s2[], char s1[]){
+int overlen(char s1[], char s2[]){
     int min = find_min(s1, s2);
     int i, j;
     int overlen = 0;
