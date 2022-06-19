@@ -1,6 +1,8 @@
 # Brute APSP
 ## Compile
-```make```
+```
+make
+```
 ## Usage
 ```
 ./brute FILENAME [-om overlap_minimum]
