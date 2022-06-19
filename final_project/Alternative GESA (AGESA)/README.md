@@ -11,11 +11,9 @@ cat aapsp.out
 
 ------
 In order to test results when om = 10 and .fasta file = 'c_elegans_ests_200.fasta':
-First download `dataset.rar` and decompress it.
+Inside Folder `input`, decompress `dataset.zip`.
 
-Then move the obtained Folder `dataset` into Folder `input` where only `strings32` is originally there.
-
-After that, you need to edit run.sh:
+### Then, you need to edit run.sh:
 
 find the last line which looks like: 
 ```
