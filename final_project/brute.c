@@ -3,7 +3,7 @@
 #include <string.h>
 #include "brute.h"
 #define MAX_NUM 400 //the maximum number of DNA sequences
-#define MAX_LEN 800 //the maximum length of DNA sequences
+#define MAX_LEN 1000 //the maximum length of DNA sequences
 
 //tell user the usage of this program
 void usage(){
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]){
     }
 
     char DNA[MAX_NUM][MAX_LEN]={'\0'};
-    char tmp;
+    char tmp1,tmp2='\n';
     int i=-1,j=0,flag=0,om=10;
 
     if(argc == 4){
@@ -45,9 +45,9 @@ int main(int argc, char* argv[]){
 	    }
     }
     
-    while((tmp=fgetc(fp))!=EOF)
+    while((tmp1=fgetc(fp))!=EOF)
     {
-        if(tmp=='>')
+        if(tmp1=='>' && tmp2=='\n')
         {
             DNA[i][j]='\0';
             i++;j=0;
@@ -55,20 +55,20 @@ int main(int argc, char* argv[]){
         }
         if(flag==1)
         {
-            if(tmp=='\n')
+            if(tmp1=='\n')
             {
                 flag=0;
             }
         }
         if(flag==0)
         {
-            if((tmp=='A')|(tmp=='G')|(tmp=='C')|(tmp=='T'))
+            if((tmp1=='A')|(tmp1=='G')|(tmp1=='C')|(tmp1=='T')|(tmp1=='N'))
             {
-                DNA[i][j]=tmp;
+                DNA[i][j]=tmp1;
                 j++;
             }
         }
-
+	tmp2=tmp1;
     }
     fclose(fp);
 
@@ -76,7 +76,8 @@ int main(int argc, char* argv[]){
     int Ov[num][num];
     for(i=0;i<num;i++){
         for(j=0;j<num;j++){
-            Ov[i][j]=overlen(DNA[i],DNA[j]);
+            if(i==j) Ov[i][j]=0;
+	    else Ov[i][j]=overlen(DNA[i],DNA[j]);
             if(Ov[i][j]>om)
             printf("%d,%d,%d\n",i,j,Ov[i][j]);
         }
