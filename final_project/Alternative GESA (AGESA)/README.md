@@ -25,3 +25,6 @@ and change it to:
 ```
 om is denoted by the integer after `-t`.
 Also you are welcome to test other om as well.
+
+----
+`utol.c` is used to break the fasta file into disparate files with each containing only one single string.
